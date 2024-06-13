@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do-LIST</title>
+    <style>
+        body{
+            background-color: #8EC5FC;
+            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+        }
+        .main{
+            width: 600px;
+            background-color: white;
+            margin: auto;
+            padding: 10px;
+        }
+        input{
+            width:70%;
+            height: 40px;
+            box-shadow: 0 0 10px 2px #ccc;
+        }
+        button{
+            padding: 15px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+        }
+        .row2{
+            width: 100%;
+        }
+        ul li{
+            list-style: none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 15px;
+            position: relative;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        ul li span{
+            position: absolute;
+            right: 20px;
+            top: 5px;
+            color: white;
+            background-color: red;
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .active{
+            background-color: orange;
+            text-decoration: line-through;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h2>TO-Do-List</h2>
+        <div class="row">
+            <input type="text" class="userData">
+            <button onclick="todo()">Click</button>
+
+            <div class="row2">
+                <ul class="ulData">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var Data=document.querySelector(".userData");
+    var ul=document.querySelector(".ulData")
+    let todo=(()=>{
+        if(Data.value==""){
+            alert("Your Input is Blank 😒")
+        }
+        else{
+            var li=document.createElement("li");
+        li.innerText=Data.value;
+        ul.append(li)
+        Data.value="";
+
+
+        var spanX=document.createElement("span");
+        spanX.append("X");
+        li.append(spanX)
+
+        spanX.onclick=()=>{
+            li.remove()
+        }
+
+        li.onclick=()=>{
+            li.classList.toggle("active") 
+        }
+        }
+    })
+</script>
+</html>
