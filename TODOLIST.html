@@ -1,102 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>to-do-LIST</title>
+    <title> To Do List </title>
     <style>
-        body{
-            background-color: #8EC5FC;
-            background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+        body {
+            background-color: #D9AFD9;
+            background-image: linear-gradient(62deg, #D9AFD9 0%, #97D9E1 100%);
+        }
 
+        main {
+            margin: 20px auto;
+            width: 500px;
+            text-align: center;
         }
-        .main{
-            width: 600px;
-            background-color: white;
-            margin: auto;
-            padding: 10px;
+
+        h1 {
+            font-size: 40px;
         }
-        input{
-            width:70%;
-            height: 40px;
-            box-shadow: 0 0 10px 2px #ccc;
+
+        input {
+            width: 350px;
+            height: 30px;
+            font-size: 18px;
         }
-        button{
-            padding: 15px 20px;
-            background-color: blue;
-            color: white;
-            border: none;
-        }
-        .row2{
-            width: 100%;
-        }
-        ul li{
-            list-style: none;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 15px;
-            position: relative;
+
+        button {
+            padding: 9px 14px;
             cursor: pointer;
-            font-size: 20px;
-        }
-        ul li span{
-            position: absolute;
-            right: 20px;
-            top: 5px;
+            background-color: rgb(109, 104, 104);
             color: white;
-            background-color: red;
-            border-radius: 50%;
+            font-weight: bold;
+            border: transparent;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        button:hover {
+            background-color: rgb(152, 145, 145);
+        }
+
+        ul li {
+            width: 343px;
+            border: 0.1px solid black;
+            text-align: left;
             padding: 5px;
+            list-style: none;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        ul li span {
+            position: absolute;
+            top: 1px;
+            right: 8px;
+            background-color: rgb(212, 36, 36);
+            border-radius: 50%;
+            padding: 3px 5px;
+            color: white;
             cursor: pointer;
         }
-        .active{
-            background-color: orange;
+
+        .active {
+            background-color: rgb(94, 98, 101);
             text-decoration: line-through;
-            color: white;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
-    <div class="main">
-        <h2>TO-Do-List</h2>
+    <main>
+        <h1>TO DO List </h1>
         <div class="row">
-            <input type="text" class="userData">
+            <input type="text" class="userdata">
             <button onclick="todo()">Click</button>
-
-            <div class="row2">
-                <ul class="ulData">
-                    
-                </ul>
-            </div>
         </div>
-    </div>
+        <div class="row2">
+            <ul class="uldata">
+
+            </ul>
+        </div>
+    </main>
 </body>
+
 <script>
-    var Data=document.querySelector(".userData");
-    var ul=document.querySelector(".ulData")
-    let todo=(()=>{
-        if(Data.value==""){
-            alert("Your Input is Blank 😒")
+    var data = document.querySelector(".userdata");
+    var uldata = document.querySelector(".uldata");
+
+
+    let todo = (() => {
+        if (data.value == "") {
+            alert("Enter a Valid Value");
         }
-        else{
-            var li=document.createElement("li");
-        li.innerText=Data.value;
-        ul.append(li)
-        Data.value="";
+        else {
+            var list = document.createElement('li');
+            list.innerText = data.value;
+            uldata.append(list);
+            data.value = '';
 
+            var spanx = document.createElement('span');
+            spanx.innerText = "X";
+            list.append(spanx);
 
-        var spanX=document.createElement("span");
-        spanX.append("X");
-        li.append(spanX)
+            spanx.onclick = () => {
+                list.remove();
+            }
 
-        spanX.onclick=()=>{
-            li.remove()
-        }
-
-        li.onclick=()=>{
-            li.classList.toggle("active") 
-        }
+            list.onclick = () => {
+                list.classList.toggle('active');
+            }
         }
     })
+
 </script>
+
 </html>
